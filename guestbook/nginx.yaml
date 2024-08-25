@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nginx
   name: nginx-created-by-argocd
-  namespace: default
+  namespace: guestbook
 spec:
   replicas: 2
   selector:
