@@ -8,6 +8,7 @@ spec:
   source:
     repoURL: https://github.com/cywk99/argocd.git
     targetRevision: HEAD
+    
     path: guestbook
   destination:
     server: https://kubernetes.default.svc
