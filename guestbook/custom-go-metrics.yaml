@@ -1,0 +1,38 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: custom-prometheus-go-app
+    app.kubernetes.io/instance: guestbook
+  name: custom-prometheus-go-app-svc
+  namespace: guestbook
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 2112
+  selector:
+    app: custom-prometheus-go-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-prometheus-go-app
+  namespace: guestbook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom-prometheus-go-app
+  template:
+    metadata:
+      labels:
+        app: custom-prometheus-go-app
+    spec:
+      containers:
+      - name: custom-prometheus-go-app
+        image: custom-prometheus-go-app:latest
+        ports:
+        - containerPort: 2112
