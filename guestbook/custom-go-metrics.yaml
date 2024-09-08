@@ -34,5 +34,6 @@ spec:
       containers:
       - name: custom-prometheus-go-app
         image: custom-prometheus-go-app:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 2112
