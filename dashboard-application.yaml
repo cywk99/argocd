@@ -11,7 +11,7 @@ spec:
     chart: kubernetes-dashboard
     helm:
       valueFiles:
-        - $values/dashboard/custom-values.yaml
+        - $values/dashboard/values-custom.yaml
   - repoURL: https://github.com/cywk99/argocd.git
     targetRevision: main
     ref: values
