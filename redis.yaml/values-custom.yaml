@@ -1,0 +1,30 @@
+global:
+  redis:
+    password: "custompassword"    # Redis password
+
+master:
+  persistence:
+    enabled: true                 # Enable persistence for Redis master
+    size: 8Gi                     # Set the size of the persistent volume
+  service:
+    type: ClusterIP               # Service type for Redis master
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"
+
+replica:
+  replicaCount: 2                 # Set the number of replicas
+  persistence:
+    enabled: true                 # Enable persistence for Redis replicas
+    size: 8Gi
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"

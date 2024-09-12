@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis
+  namespace: argocd
+spec:
+  destination:
+    namespace: guestbook            # Target namespace in the Kubernetes cluster
+    server: https://kubernetes.default.svc  # Kubernetes API server
+  source:
+    repoURL: https://charts.bitnami.com/bitnami  # Public Helm repository URL
+    chart: redis                # Helm chart name
+    targetRevision: 17.3.2      # Specify chart version
+    helm:
+      valueFiles:
+        - values-custom.yaml    # Path to the custom values file (in the Git repo)
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
