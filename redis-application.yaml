@@ -10,10 +10,11 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami  # Public Helm repository URL
     chart: redis                # Helm chart name
+    path: redis    
     targetRevision: 17.3.2      # Specify chart version
     helm:
       valueFiles:
-        - redis/values-custom.yaml    # Path to the custom values file (in the Git repo)
+        - values-custom.yaml    # Path to the custom values file (in the Git repo)
   project: default
   syncPolicy:
     automated:
